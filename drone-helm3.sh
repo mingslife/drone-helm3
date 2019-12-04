@@ -29,7 +29,7 @@ exec_package() {
 
 # push
 exec_push() {
-  if [ $PLUGIN_PUSH == true ]; then
+  if [ $PLUGIN_PUSH != true ]; then
     return
   fi
 
@@ -45,7 +45,7 @@ exec_push() {
   local chart_version=${tar_name##*-}
 
   local auth_arg
-  if [ $authorization != "" ]; then
+  if [ "$authorization" != "" ]; then
     auth_arg="-H \"Authorization: $authorization\""
   fi
 
@@ -55,7 +55,7 @@ exec_push() {
 
 # deploy
 exec_deploy() {
-  if [ $PLUGIN_DEPLOY == true ]; then
+  if [ $PLUGIN_DEPLOY != true ]; then
     return
   fi
 
